@@ -6,15 +6,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "styles_complete.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "styles_improved.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "styles.css",
+      "src": "*.css",
       "use": "@vercel/static"
     },
     {
@@ -27,7 +19,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "outputDirectory": ".",
-  "framework": null
+  ]
 }
