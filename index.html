@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinPlan Pro - Заманауи қаржылық жоспарлаушы</title>
+    <link rel="stylesheet" href="styles_complete.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinPlan Pro</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="nav" id="nav-menu">
+                <a href="#dashboard" class="nav-link active">Қаржылық бақылау панелі</a>
+                <a href="#mortgage" class="nav-link">Ипотека</a>
+                <a href="#loans" class="nav-link">Несие</a>
+                <a href="#expenses" class="nav-link">Шығындар</a>
+                <a href="#income" class="nav-link">Кіріс</a>
+                <a href="#savings" class="nav-link">Жинақтар</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <h1>Қаржылық бақылау панелі</h1>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-home"></i>
+                            <h3>Mortgage</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stat">$0.00</div>
+                            <p>Ағымдағы ипотека балансы</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>Loans</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stat">$0.00</div>
+                            <p>Жалпы несие балансы</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h3>Monthly Income</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stat">$0.00</div>
+                            <p>Жалпы ай сайынғы кіріс</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-piggy-bank"></i>
+                            <h3>Savings</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stat">$0.00</div>
+                            <p>Жалпы жинақтар</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mortgage Calculator Section -->
+        <section id="mortgage" class="section">
+            <div class="container">
+                <h2>Ипотека калькуляторы</h2>
+                <div class="calculator">
+                    <div class="input-group">
+                         <label for="home-price">Үй бағасы (KZT)</label>
+                        <input type="number" id="home-price" placeholder="500,000">
+                    </div>
+                    <div class="input-group">
+                         <label for="down-payment">Алдын ала төлем (KZT)</label>
+                        <input type="number" id="down-payment" placeholder="100,000">
+                    </div>
+                    <div class="input-group">
+                         <label for="interest-rate">Пайыздық мөлшерлеме (%)</label>
+                        <input type="number" id="interest-rate" step="0.01" placeholder="4.5">
+                    </div>
+                    <div class="input-group">
+                         <label for="loan-term">Несие мерзімі (жыл)</label>
+                        <input type="number" id="loan-term" placeholder="30">
+                    </div>
+                     <button onclick="calculateMortgage()" class="btn-primary">Есептеу</button>
+                    
+                    <div class="results" id="mortgage-results">
+                         <h3>Нәтижелер</h3>
+                        <div class="result-item">
+                            <span>Monthly Payment:</span>
+                            <span id="monthly-payment">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Payment:</span>
+                            <span id="total-payment">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Interest:</span>
+                            <span id="total-interest">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loans Section -->
+        <section id="loans" class="section">
+            <div class="container">
+                <h2>Несие басқару</h2>
+                <div class="calculator">
+                    <div class="input-group">
+                         <label for="loan-amount">Несие сомасы (KZT)</label>
+                        <input type="number" id="loan-amount" placeholder="10,000">
+                    </div>
+                    <div class="input-group">
+                         <label for="loan-interest">Пайыздық мөлшерлеме (%)</label>
+                        <input type="number" id="loan-interest" step="0.01" placeholder="7.5">
+                    </div>
+                    <div class="input-group">
+                         <label for="loan-term-months">Мерзім (ай)</label>
+                        <input type="number" id="loan-term-months" placeholder="60">
+                    </div>
+                     <button onclick="calculateLoan()" class="btn-primary">Есептеу</button>
+                    
+                    <div class="results" id="loan-results">
+                         <h3>Несие мәліметтері</h3>
+                        <div class="result-item">
+                            <span>Monthly Payment:</span>
+                            <span id="loan-monthly">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Payment:</span>
+                            <span id="loan-total">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Interest:</span>
+                            <span id="loan-interest-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expenses Section -->
+        <section id="expenses" class="section">
+            <div class="container">
+                <h2>Шығындарды бақылау</h2>
+                <div class="expense-tracker">
+                    <div class="input-group">
+                         <label for="expense-amount">Сома (KZT)</label>
+                        <input type="number" id="expense-amount" placeholder="100">
+                    </div>
+                    <div class="input-group">
+                         <label for="expense-category">Санат</label>
+                        <select id="expense-category">
+                             <option value="housing">Тұрғын үй</option>
+                             <option value="food">Азық-түлік</option>
+                             <option value="transport">Көлік</option>
+                             <option value="utilities">Коммуналдық қызметтер</option>
+                             <option value="entertainment">Көңіл көтеру</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="expense-date">Date</label>
+                        <input type="date" id="expense-date">
+                    </div>
+                    <div class="input-group">
+                        <label for="expense-description">Description</label>
+                        <input type="text" id="expense-description" placeholder="Expense description">
+                    </div>
+                    <button onclick="addExpense()" class="btn-primary">Add Expense</button>
+                    
+                    <div class="expense-list" id="expense-list">
+                        <h3>Recent Expenses</h3>
+                        <div class="expense-item template">
+                            <span class="amount">$0.00</span>
+                            <span class="category">Category</span>
+                            <span class="date">Date</span>
+                            <span class="description">Description</span>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Income Section -->
+        <section id="income" class="section">
+            <div class="container">
+                <h2>Кіріс басқару</h2>
+                <div class="income-tracker">
+                    <div class="input-group">
+                         <label for="income-amount">Сома (KZT)</label>
+                        <input type="number" id="income-amount" placeholder="3000">
+                    </div>
+                    <div class="input-group">
+                         <label for="income-source">Көз</label>
+                        <select id="income-source">
+                             <option value="salary">Жалақы</option>
+                             <option value="freelance">Фриланс</option>
+                             <option value="investment">Инвестиция</option>
+                             <option value="rental">Жалдау</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="income-date">Date</label>
+                        <input type="date" id="income-date">
+                    </div>
+                    <button onclick="addIncome()" class="btn-primary">Add Income</button>
+                    
+                    <div class="income-list" id="income-list">
+                        <h3>Income History</h3>
+                        <div class="income-item template">
+                            <span class="amount">$0.00</span>
+                            <span class="source">Source</span>
+                            <span class="date">Date</span>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Section -->
+        <section id="savings" class="section">
+            <div class="container">
+                <h2>Жинақтар калькуляторы</h2>
+                <div class="calculator">
+                    <div class="input-group">
+                         <label for="savings-goal">Жинақтар мақсаты (KZT)</label>
+                        <input type="number" id="savings-goal" placeholder="50,000">
+                    </div>
+                    <div class="input-group">
+                         <label for="current-savings">Ағымдағы жинақтар (KZT)</label>
+                        <input type="number" id="current-savings" placeholder="10,000">
+                    </div>
+                    <div class="input-group">
+                         <label for="monthly-contribution">Ай сайынғы жарна (KZT)</label>
+                        <input type="number" id="monthly-contribution" placeholder="500">
+                    </div>
+                    <div class="input-group">
+                         <label for="savings-interest">Жылдық пайыздық мөлшерлеме (%)</label>
+                        <input type="number" id="savings-interest" step="0.01" placeholder="3.5">
+                    </div>
+                     <button onclick="calculateSavings()" class="btn-primary">Есептеу</button>
+                    
+                    <div class="results" id="savings-results">
+                         <h3>Жинақтар болжамы</h3>
+                        <div class="result-item">
+                             <span>Мақсатқа жету уақыты:</span>
+                            <span id="time-to-goal">0 months</span>
+                        </div>
+                        <div class="result-item">
+                             <span>Жалпы жарналар:</span>
+                            <span id="total-contributions">$0.00</span>
+                        </div>
+                        <div class="result-item">
+                             <span>Жалпы алынған пайыздар:</span>
+                            <span id="total-interest-earned">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script_improved.js"></script>
+</body>
+</html>
