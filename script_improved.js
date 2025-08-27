@@ -1,3 +1,4 @@
+let financialData = {
     expenses: [],
     income: [],
     mortgage: null,
